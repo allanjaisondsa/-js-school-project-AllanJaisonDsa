@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timeline App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">TimelineApp</div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <main>
+    <section id="timeline-slider">
+      <div class="years" id="year-labels"></div>
+      <input type="range" id="year-range" min="0" max="0" step="1">
+    </section>
+
+    <section id="event-card"></section>
+  </main>
+
+  <div id="modal"></div>
+
+  <script type="module" src="dist/index.js"></script>
+</body>
+</html>

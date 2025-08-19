@@ -1,0 +1,108 @@
+:root {
+  --bg-light: #ffffff;
+  --text-light: #111111;
+  --bg-dark: #1e1e1e;
+  --text-dark: #eeeeee;
+  --primary: #2563eb;
+}
+
+/* Light / Dark theme switch */
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.app
+{
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.header
+{
+  text-align: center;
+}
+
+/* Timeline container */
+.timeline-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+/* Horizontal timeline bar */
+.timeline-bar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.marker {
+  cursor: pointer;
+  font-weight: 500;
+  color: gray;
+  position: relative;
+}
+
+.marker.active {
+  color: var(--primary);
+}
+
+.marker.active::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin: 0.3rem auto 0;
+}
+
+/* Event card */
+.event-card {
+  background: inherit;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+.event-card .year {
+  color: var(--primary);
+  margin: 0;
+}
+
+.event-card .title {
+  margin: 0.3rem 0 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.event-card .event-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.event-card .description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.event-card .learn-more {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}

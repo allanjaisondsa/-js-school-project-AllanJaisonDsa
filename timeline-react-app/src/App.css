@@ -7,7 +7,7 @@
 }
 
 /* Light / Dark theme switch */
-body.light {
+body {
   background: var(--bg-light);
   color: var(--text-light);
 }

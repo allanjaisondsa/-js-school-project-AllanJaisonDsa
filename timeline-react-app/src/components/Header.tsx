@@ -11,8 +11,14 @@ export default function Header() {
   return (
     <header className="header">
       <h1>Tech Timeline</h1>
-      <button onClick={toggleTheme}>
-        {dark ? "☀️ Light" : "🌙 Dark"}
+
+      <button
+        onClick={toggleTheme}
+        aria-pressed={dark}
+        aria-label="Toggle dark mode"
+        className="theme-toggle"
+      >
+        {dark ? "☀️ Light Mode" : "🌙 Dark Mode"}
       </button>
     </header>
   );

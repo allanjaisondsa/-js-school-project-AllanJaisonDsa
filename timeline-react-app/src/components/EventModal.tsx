@@ -1,21 +1,53 @@
-import { type TimelineEvent } from "../data/eventlist";
+import { useEffect, useRef } from "react";
+import {type TimelineEvent } from "../data/eventlist";
 
 interface Props {
   event: TimelineEvent | null;
   onClose: () => void;
+  triggerRef: React.RefObject<HTMLElement | null>;
 }
 
-export default function EventModal({ event, onClose }: Props) {
+export default function EventModal({ event, onClose, triggerRef }: Props) {
+  const modalRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    if (event && modalRef.current) {
+      modalRef.current.showModal();
+      modalRef.current.focus();
+    }
+  }, [event]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        triggerRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [onClose, triggerRef]);
+
   if (!event) return null;
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <h2>{event.year} — {event.title}</h2>
-        <img src={event.image} alt={event.title} />
-        <p>{event.description}</p>
-        <button onClick={onClose}>Close</button>
-      </div>
-    </div>
+    <dialog
+      ref={modalRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      className="event-card"
+    >
+      <h2 id="modal-title">{event.title}</h2>
+      <p>{event.description}</p>
+      <button
+        onClick={() => {
+          onClose();
+          triggerRef.current?.focus();
+        }}
+      >
+        Close
+      </button>
+    </dialog>
   );
 }
